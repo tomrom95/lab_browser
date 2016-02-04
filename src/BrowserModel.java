@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-
 /**
  * This represents the heart of the browser: the collections
  * that organize all the URLs into useful structures.
@@ -17,7 +16,7 @@ import java.util.Set;
 public class BrowserModel {
     // constants
     public static final String PROTOCOL_PREFIX = "http://";
-    public static final String DEFAULT_ERROR_PACKAGE = "resources/ModelErrors.properties";
+    public static final String DEFAULT_ERROR_PACKAGE = "resources/ModelErrors";
     // state
     private URL myHome;
     private URL myCurrentURL;

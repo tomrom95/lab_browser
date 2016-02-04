@@ -1,6 +1,6 @@
 .root {
     -fx-font-size: 12pt;
-    -fx-font-family: "Arial";
+    -fx-font-family: "Permanent Marker";
     -fx-base: #0736A4;
     -fx-background: #D32323;
     -fx-text-fill:black;
@@ -30,12 +30,12 @@
 
 .label {
     -fx-font-size: 9pt;
-    -fx-font-family: "Arial";
+    -fx-font-family: "Permanent Marker";
     -fx-text-fill: #006464;
     -fx-opacity: 0.6;
 }
 
 .text-field {
     -fx-font-size: 12pt;
-    -fx-font-family: "Arial";
+    -fx-font-family: "Permanent Marker";
 }

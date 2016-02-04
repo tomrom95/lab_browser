@@ -47,6 +47,7 @@ public class BrowserView {
     // constants
     public static final Dimension DEFAULT_SIZE = new Dimension(800, 600);
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+    public static final String GOOGLE_FONT = "https://fonts.googleapis.com/css?family=Permanent+Marker";
     public static final String STYLESHEET = "default.css";
     public static final String BLANK = " ";
 
@@ -86,6 +87,7 @@ public class BrowserView {
         // create scene to hold UI
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
         myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);
+        myScene.getStylesheets().add(GOOGLE_FONT);
     }
 
     /**
