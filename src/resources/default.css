@@ -1,7 +1,7 @@
 .root {
     -fx-font-size: 12pt;
     -fx-font-family: "Arial";
-    -fx-base: #424242;
+    -fx-base: #0736A4;
     -fx-background: #D32323;
     -fx-text-fill:black;
 }
@@ -9,7 +9,6 @@
 .button {
     -fx-background-color:white;
     -fx-padding: 6;
-    -fx-border: 2px solid;
     -fx-border-color: #0736A4;
     -fx-border-radius: 2;
     -fx-text-fill:black;

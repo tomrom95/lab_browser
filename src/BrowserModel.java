@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 
@@ -16,12 +17,15 @@ import java.util.Set;
 public class BrowserModel {
     // constants
     public static final String PROTOCOL_PREFIX = "http://";
+    public static final String DEFAULT_ERROR_PACKAGE = "resources/ModelErrors.properties";
     // state
     private URL myHome;
     private URL myCurrentURL;
     private int myCurrentIndex;
     private List<URL> myHistory;
     private Map<String, URL> myFavorites;
+    // get strings from resource file
+    private ResourceBundle myResources;
 
 
     /**
@@ -33,6 +37,7 @@ public class BrowserModel {
         myCurrentIndex = -1;
         myHistory = new ArrayList<>();
         myFavorites = new HashMap<>();
+        myResources = ResourceBundle.getBundle(DEFAULT_ERROR_PACKAGE);
     }
 
     /**
@@ -43,7 +48,9 @@ public class BrowserModel {
             myCurrentIndex++;
             return myHistory.get(myCurrentIndex);
         }
-        return null;
+        else{
+        	throw new BrowserException(myResources.getString("NextError"));
+        }
     }
 
     /**
@@ -54,7 +61,9 @@ public class BrowserModel {
             myCurrentIndex--;
             return myHistory.get(myCurrentIndex);
         }
-        return null;
+        else{
+        	throw new BrowserException(myResources.getString("BackError"));
+        }
     }
 
     /**
@@ -77,7 +86,7 @@ public class BrowserModel {
             return myCurrentURL;
         }
         catch (Exception e) {
-            return null;
+            throw new BrowserException(String.format(myResources.getString("ErrorOnGo"), url));
         }
     }
 
@@ -133,7 +142,9 @@ public class BrowserModel {
         if (name != null && !name.equals("") && myFavorites.containsKey(name)) {
             return myFavorites.get(name);
         }
-        return null;
+        else{
+        	throw new BrowserException();
+        }
     }
 
     // deal with a potentially incomplete URL
@@ -151,9 +162,10 @@ public class BrowserModel {
                     // e.g., let user leave off initial protocol
                     return new URL(PROTOCOL_PREFIX + possible);
                 } catch (MalformedURLException eee) {
-                    return null;
+                    throw new BrowserException(String.format(myResources.getString("BadURL"), possible));
                 }
             }
         }
     }
+    
 }
