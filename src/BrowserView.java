@@ -61,6 +61,7 @@ public class BrowserView {
     private Button myBackButton;
     private Button myNextButton;
     private Button myHomeButton;
+    private Button myAddFavoriteButton;
     // favorites
     private ComboBox<String> myFavorites;
     // get strings from resource file
@@ -84,7 +85,7 @@ public class BrowserView {
         enableButtons();
         // create scene to hold UI
         myScene = new Scene(root, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
-        //myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);
+        myScene.getStylesheets().add(DEFAULT_RESOURCE_PACKAGE + STYLESHEET);
     }
 
     /**
@@ -96,7 +97,7 @@ public class BrowserView {
             update(valid);
         }
         else {
-            showError("Could not load " + url);
+            showError(myResources.getString("ErrorTitle") + url);
         }
     }
 
@@ -224,16 +225,33 @@ public class BrowserView {
     // make buttons for setting favorites/home URLs
     private Node makePreferencesPanel () {
         HBox result = new HBox();
-        myFavorites = new ComboBox<String>();
+        myFavorites = makeFavoritesBox();
         // ADD REST OF CODE HERE
         result.getChildren().add(makeButton("SetHomeCommand", event -> {
             myModel.setHome();
             enableButtons();
         }));
+        myAddFavoriteButton = makeButton("AddFavoriteCommand", event -> addFavorite());
+        result.getChildren().add(myAddFavoriteButton);
+        result.getChildren().add(myFavorites);
         return result;
     }
+    
+    private ComboBox<String> makeFavoritesBox(){
+    	ComboBox<String> box = new ComboBox<String>();
+    	for(String fave: myModel.getFavoriteList()){
+    		box.getItems().add(fave);
+    	}
+    	box.setOnAction(event -> selectFavorite(event));
+    	return box;
+    }
 
-    // makes a button using either an image or a label
+    private void selectFavorite(ActionEvent event) {
+		String faveName = myFavorites.getValue();;
+		showFavorite(faveName);
+	}
+
+	// makes a button using either an image or a label
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         // represent all supported image suffixes
         final String IMAGEFILE_SUFFIXES = 

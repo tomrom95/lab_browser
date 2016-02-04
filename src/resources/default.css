@@ -1,40 +1,42 @@
 .root {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Courier New";
-    -fx-base: rgb(132, 145, 47);
-    -fx-background: rgb(225, 228, 203);
+    -fx-font-size: 12pt;
+    -fx-font-family: "Arial";
+    -fx-base: #424242;
+    -fx-background: #D32323;
+    -fx-text-fill:black;
 }
 
 .button {
-    -fx-text-fill: #006464;
-    -fx-background-color: #DFB951;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
-    -fx-padding: 8;
+    -fx-background-color:white;
+    -fx-padding: 6;
+    -fx-border: 2px solid;
+    -fx-border-color: #0736A4;
+    -fx-border-radius: 2;
+    -fx-text-fill:black;
 }
 
-.button:hover {
-    -fx-background-color: #3a3a3a;
+.button:hover,
+.button:focus {
+    -fx-background-color: #0736A4;;
+    -fx-text-fill: white;
 }
 
 .combo-box-base {
-    -fx-text-base-color: #006464;
-    -fx-background-color: #DFB951;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
+    -fx-background-color:white;
 }
 .combo-box-base:hover {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #0736A4;;
+    -fx-text-fill: white;
 }
 
 .label {
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 9pt;
+    -fx-font-family: "Arial";
     -fx-text-fill: #006464;
     -fx-opacity: 0.6;
 }
 
 .text-field {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12pt;
+    -fx-font-family: "Arial";
 }

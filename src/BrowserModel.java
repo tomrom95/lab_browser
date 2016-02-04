@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -119,6 +120,10 @@ public class BrowserModel {
         if (name != null && !name.equals("") && myCurrentURL != null) {
             myFavorites.put(name, myCurrentURL);
         }
+    }
+    
+    public Set<String> getFavoriteList(){
+    	return myFavorites.keySet();
     }
 
     /**
