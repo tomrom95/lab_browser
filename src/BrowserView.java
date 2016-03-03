@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -267,7 +269,21 @@ public class BrowserView {
         } else {
             result.setText(label);
         }
-        result.setOnAction(handler);
+        result.setOnAction(ex -> {
+        	try{
+        		Method method = null;
+				try {
+					method = this.getClass().getMethod("addFavorite");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		method.invoke(this);
+        	}catch (IllegalArgumentException e) { 
+            } catch (IllegalAccessException e) { 
+            } catch (InvocationTargetException e) {
+            }
+        });
         return result;
     }
 
